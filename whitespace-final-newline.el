@@ -4,6 +4,8 @@
 
 ;; Author: Michael D. Adams <https://michaeldadams.org>
 ;; Version: 1.0
+;; Keywords: whitespace, newline, wp
+;; URL: https://bitbucket.org/adamsmd/whitespace-final-newline/
 
 ;; This file is not part of GNU Emacs.
 
