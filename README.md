@@ -21,11 +21,14 @@ The default configuration does not show the message when the point is at
 the end of the buffer.  This can be changed by customizing
 `whitespace-final-newline-no-message-when-point-at-eob`.
 
-Changes to `whitespace-final-newline-message` take effect only when
-the `whitespace-final-newline-mode` minor mode is being turned on.  Thus,
-you may need to toggle the mode off and on again in affected buffers
-before you see the effect of any configuration changes to
+Changes to `whitespace-final-newline-message` take effect only when the
+`whitespace-final-newline-mode` minor mode is being turned on.  Thus, you
+may need to toggle the mode off and on again in affected buffers before
+you see the effect of any configuration changes to
 `whitespace-final-newline-message`.
+
+In the long term, I would like to have this feature implemented by the
+official `whitespace.el` file that comes with Emacs.
 
 ## Source
 
@@ -43,11 +46,12 @@ in the source code.
 
     - Option 1 (preferred): Install from MELPA
 
-        - Enable installation of packages from MELPA
-          (see <http://melpa.org/#/getting-started>).
+        - Enable installation of packages from MELPA (see
+          <http://melpa.org/#/getting-started>).
 
-        - Launch Emacs's package manager from the menu with `Options -> Manage
-          Emacs Packages` or manually with `M-x package-list-packages`.
+        - Launch Emacs's package manager from the menu with `Options ->
+          Manage Emacs Packages` or manually with `M-x
+          package-list-packages`.
 
         - Select the `whitespace-final-newline` package for installation.
 
