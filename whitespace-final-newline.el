@@ -24,9 +24,9 @@
 
 ;;; Commentary:
 
-;; This package contains a minor mode that highlights when a buffer has no
-;; final NEWLINE by adding an overlay with a highlighted message to the
-;; end of the buffer.
+;; This package contains a minor mode that highlights when a buffer does
+;; not end with a NEWLINE by adding an overlay with a highlighted message
+;; to the end of the buffer.
 
 ;;; Code:
 
@@ -39,6 +39,13 @@
 (defgroup whitespace-final-newline nil
   "Minor mode highlighting when a buffer does not end with a NEWLINE."
   :group 'whitespace)
+
+(defcustom whitespace-final-newline-no-message-when-point-at-eob t
+  "Do not show the message when the point is at the end of the buffer.
+
+WARNING: Turning this off may cause the message to be shown in the minibuffer."
+  :type 'boolean
+  :group 'whitespace-final-newline)
 
 (defcustom whitespace-final-newline-message " <-- No final newline"
   "Text to show when a buffer does not end with a NEWLINE."
@@ -60,9 +67,12 @@ buffer does not end with a NEWLINE."
   "Return true when the overlay at BUFFER-POSITION should not be shown."
   (or
    ;; Point is at the end of the buffer
-   (= (point) buffer-position)
+   (and whitespace-final-newline-no-message-when-point-at-eob
+        (= (point) buffer-position))
    ;; There is a newline at the end of the buffer
-   (= 0 (save-excursion (goto-char buffer-position) (current-column)))))
+   (let ((s (buffer-substring-no-properties (buffer-size) (1+ (buffer-size)))))
+     (or (string-equal "\n" s)
+         (string-equal "\r" s)))))
 
 (defun whitespace-final-newline-make-overlay ()
   "Add the overlay containing the highlighted message."
