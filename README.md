@@ -33,7 +33,7 @@ official `whitespace.el` file that comes with Emacs.
 ## Source
 
 The source code for this package is available at:
-  <https://bitbucket.org/adamsmd/whitespace-final-newline/>
+  <https://github.com/adamsmd/whitespace-final-newline/>
 
 ## License
 
